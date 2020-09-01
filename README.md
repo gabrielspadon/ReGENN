@@ -27,7 +27,7 @@ Please cite the following paper:
          author = "Gabriel Spadon and Shenda Hong and Bruno Brandoli and Stan Matwin and Jose F. Rodrigues-Jr and Jimeng Sun",
           title = "Pay Attention to Evolution: Time Series Forecasting with Deep Graph-Evolution Learning",
            year = "2020",
-         eprint = "...", # TODO: Will be updated after public release
+         eprint = "2008.12833",
    primaryClass = "cs.LG",
   archivePrefix = "arXiv"
 }
