@@ -7,7 +7,7 @@ This repository provides the code for the paper *Pay Attention to Evolution: Tim
 Please clone **@gabrielspadon**'s Virtual Environment by running the following command:
 
 ```bash
-conda env create -f py37.yml
+conda env create -f py37.yaml
 ```
 
 ### Instructions
