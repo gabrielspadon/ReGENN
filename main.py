@@ -88,12 +88,12 @@ def __main__():
     ]
 
     # [+] Positional Arguments
-    parser.add_argument("input", type=str, nargs="?", help="A PyTorch tri-dimensional tensor of shape (samples, time, variables).")
-    parser.add_argument("stride", type=int, help="The number of time-steps to predict.")
-    parser.add_argument("validation-samples", type=float, help="Percentage of samples reserved for assessing sample-generalization.")
-    parser.add_argument("validation-stride", type=int, help="The number of time-steps reserved for assessing time-generalization.")
-    parser.add_argument("watch-axis", type=int, nargs="?", choices=[0, 1, 2, 3], help="The data to which the schedulers will be watching - 0: training data; 1: reserved samples, 2: reserved time-fold of the training data, and 3: reserved time-fold of the reserved samples.")
-    parser.add_argument("window", type=int, help="The number of previous time-steps to look during training and testing.")
+    parser.add_argument("--input", type=str, nargs="?", help="A PyTorch tri-dimensional tensor of shape (samples, time, variables).")
+    parser.add_argument("--stride", type=int, help="The number of time-steps to predict.")
+    parser.add_argument("--validation-samples", type=float, help="Percentage of samples reserved for assessing sample-generalization.")
+    parser.add_argument("--validation-stride", type=int, help="The number of time-steps reserved for assessing time-generalization.")
+    parser.add_argument("--watch-axis", type=int, nargs="?", choices=[0, 1, 2, 3], help="The data to which the schedulers will be watching - 0: training data; 1: reserved samples, 2: reserved time-fold of the training data, and 3: reserved time-fold of the reserved samples.")
+    parser.add_argument("--window", type=int, help="The number of previous time-steps to look during training and testing.")
 
     # [-] Optional Arguments
     parser.add_argument("-aM", "--ablation-mode", action="store_true", help="Deactivates all non-vanilla layers (default: %(default)s).")
