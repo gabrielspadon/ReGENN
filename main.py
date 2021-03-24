@@ -114,7 +114,6 @@ def __main__():
     parser.add_argument("-g", "--gate", type=str, default="LSTM", nargs="?", choices=["RNN", "GRU", "LSTM"], help="Defines the architecture used by the time gate (default: %(default)s).")
     parser.add_argument("--gpu", type=int, default=-1, help="Which GPU to use - automatically picks one when entering a negative number (default: %(default)s).")
     parser.add_argument("--iterator", type=str, default="time", nargs="?", choices=["time", "batch"], help="The data iterator to be used during training (default: %(default)s).")
-    parser.add_argument("--k-fold", type=int, default=0, help="Number of folds to use during k-fold cross-validation (default: %(default)s).")
     parser.add_argument("-lr", "--learning-rate", type=float, default=.001, help="Learning rate of the optimizer (default: %(default)s).")
     parser.add_argument("--load-weights", type=str, nargs="?", default=None, help="Path to a pre-trained ReGENN model, from which we will use pre-learned weights to initialize the current model weights (default: %(default)s).")
     parser.add_argument("--network-type", type=str, nargs="?", default="ReGENN", choices=["ReGENN"], help="The network architecture to be used (default: %(default)s).")
@@ -239,9 +238,7 @@ def __main__():
 
         # Validating training-, development-, and testing-related variables
         assert args.validation_stride >= 0 and 1. >= args.validation_samples >= 0. and args.window > 0 and args.stride > 0 and \
-               args.k_fold >= 0 and dataset.shape[0] > (dataset.shape[0] * args.validation_samples) and \
-               dataset.shape[1] >= (args.window + args.validation_stride + (2 * args.stride)) and \
-               (args.validation_stride > 0 or args.validation_samples > 0 or args.k_fold > 0), \
+               dataset.shape[1] >= (args.window + args.validation_stride + (2 * args.stride)), \
             "Unfeasible parametrization for the current dataset."
 
         # Checking the fit-watch parameter used by the schedulers
@@ -249,15 +246,8 @@ def __main__():
                not ((args.watch_axis == 2 or args.watch_axis == 3) and args.validation_stride == 0), \
             "Make some data available for testing on time- and/or sample-reserved data."
 
-        if args.k_fold > 0:
-            if args.validation_samples > 0:
-                # k-fold cross-validation will automatically split training and test data
-                warnings.warn("The cross-validation will overwrite the reserved-sample parameter.", Warning)
-            # Running cross-validation mode
-            cross_train(dataset, args)
-        else:
-            # Running single-run training mode
-            train_once(dataset, args)
+        # Running single-run training mode
+        train_once(dataset, args)
 
         # Printing user-input parameters for further reproducibility and also sanity-check
         print("\n[HYPERPARAMETERS]", end="\n\n")
