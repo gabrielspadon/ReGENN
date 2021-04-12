@@ -54,7 +54,7 @@ class NeuralTrainer:
             setattr(self, key, value)
 
         # Whether the network will be tested on unseen samples or not
-        self.unknown_samples = self.validation_samples > 0 or self.k_fold > 0
+        self.unknown_samples = self.validation_samples > 0# or self.k_fold > 0
 
         if self.iterator == "time":
             # Shows to the network how time-series evolve over time
@@ -408,7 +408,7 @@ class NeuralTrainer:
         trn_samples = ("{M}" if self.watch_axis == 0 else "[M]") + " %s" % (cost_string % tuplenizer(loss_matrix, 0))
         # String for the non-mandatory development samples
         res_samples = ""  # It will remain empty if no data is reserved
-        if self.validation_samples > 0 or self.k_fold > 0:  # True whenever we have the mandatory and sample-reserved sets
+        if self.validation_samples > 0:# or self.k_fold > 0:  # True whenever we have the mandatory and sample-reserved sets
             res_samples = ("{R}" if self.watch_axis == 1 else "[R]") + " %s" % (cost_string % tuplenizer(loss_matrix, 1))
         # Verbosing the results to the STDOUT
         print("%s - duration: %06.2fs %s %s" % (opening, epoch_duration, trn_samples, res_samples))
@@ -418,7 +418,7 @@ class NeuralTrainer:
             dev_trn = ("{M}" if self.watch_axis == 2 else "[M]") + " %s" % (cost_string % tuplenizer(self.dev_loss, 0))
             # String for the non-mandatory development samples
             dev_res = ""  # It will remain empty if no data is reserved
-            if self.validation_samples > 0 or self.k_fold > 0:  # True whenever we have the mandatory and sample-reserved sets
+            if self.validation_samples > 0:# or self.k_fold > 0:  # True whenever we have the mandatory and sample-reserved sets
                 dev_res = ("{R}" if self.watch_axis == 3 else "[R]") + " %s" % (cost_string % tuplenizer(self.dev_loss, 1))
             # Verbosing the results to the STDOUT
             print("& Dev #%04d - duration: %06.2fs %s %s" % (self.epoch_id, validation_duration, dev_trn, dev_res))
