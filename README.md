@@ -1,6 +1,11 @@
-# Recurrent Graph Evolution Neural Network (ReGENN) for Multiple Multivariate Time-Series Forecasting (MMTS) using Graph Soft Evolution (GSE)
+# ReGENN for Panel Time-Series Forecasting using GSE
 
-This repository provides the code for the paper *Pay Attention to Evolution: Time Series Forecasting with Deep Graph-Evolution Learning*, currently under review.
+`This repository is no longer maintained.`
+
+### Acronyms
+
+- Recurrent Graph Evolution Neural Network (ReGENN)
+- Graph Soft Evolution (GSE)
 
 ### Requirements
 
@@ -23,12 +28,14 @@ python main.py --help
 Please cite the following paper:
 
 ```bibtex
-@Article{Spadon2020:Evolution,
-         author = "Gabriel Spadon and Shenda Hong and Bruno Brandoli and Stan Matwin and Jose F. Rodrigues-Jr and Jimeng Sun",
-          title = "Pay Attention to Evolution: Time Series Forecasting with Deep Graph-Evolution Learning",
-           year = "2020",
-         eprint = "2008.12833",
-   primaryClass = "cs.LG",
-  archivePrefix = "arXiv"
+@Article{Spadon2022:ReGENN,
+    author  = {Spadon, Gabriel and Hong, Shenda and Brandoli, Bruno and Matwin, Stan and Rodrigues-Jr, Jose F. and Sun, Jimeng},
+    journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+    title   = {Pay Attention to Evolution: Time Series Forecasting With Deep Graph-Evolution Learning}, 
+    year    = {2022},
+    volume  = {44},
+    number  = {9},
+    pages   = {5368-5384},
+    doi     = {10.1109/TPAMI.2021.3076155}}
 }
 ```
